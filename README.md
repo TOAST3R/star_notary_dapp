@@ -17,4 +17,4 @@ STAR
 
 #### Your “Token Address” on the Rinkeby Network
 
-https://rinkeby.etherscan.io/address/0xce13b1a2909a5464fcd592724a97c68859efb343
+https://rinkeby.etherscan.io/token/0x7aaa9b44019e29ee4459a7e19c1c6ea77f70cb21
