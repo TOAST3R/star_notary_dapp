@@ -2,6 +2,7 @@ const StarNotary = artifacts.require("StarNotary");
 
 var accounts;
 var owner;
+var instance;
 
 contract('StarNotary', (accs) => {
     accounts = accs;
@@ -9,9 +10,11 @@ contract('StarNotary', (accs) => {
     user2 = accounts[1];
 });
 
-it('can Create a Star', async() => {
-    let instance = await StarNotary.deployed();
+before(async function(){
+    instance = await StarNotary.deployed();
+})
 
+it('can Create a Star', async() => {
     let tokenId = 1;
     await instance.createStar('Awesome Star!', tokenId, {from: user1})
 
@@ -19,8 +22,6 @@ it('can Create a Star', async() => {
 });
 
 it('lets user1 put up their star for sale', async() => {
-    let instance = await StarNotary.deployed();
-
     let starId = 2;
     let starPrice = web3.utils.toWei(".01", "ether");
     await instance.createStar('awesome star', starId, {from: user1});
@@ -30,8 +31,6 @@ it('lets user1 put up their star for sale', async() => {
 });
 
 it('lets user1 get the funds after the sale', async() => {
-    let instance = await StarNotary.deployed();
-
     let starId = 3;
     let starPrice = web3.utils.toWei(".01", "ether");
     let balance = web3.utils.toWei(".05", "ether");
@@ -47,8 +46,6 @@ it('lets user1 get the funds after the sale', async() => {
 });
 
 it('lets user2 buy a star, if it is put up for sale', async() => {
-    let instance = await StarNotary.deployed();
-
     let starId = 4;
     let starPrice = web3.utils.toWei(".01", "ether");
     let balance = web3.utils.toWei(".05", "ether");
@@ -61,7 +58,6 @@ it('lets user2 buy a star, if it is put up for sale', async() => {
 });
 
 it('lets user2 buy a star and decreases its balance in ether', async() => {
-    let instance = await StarNotary.deployed();
     let starId = 5;
     let starPrice = web3.utils.toWei(".01", "ether");
     let balance = web3.utils.toWei(".05", "ether");
@@ -80,7 +76,6 @@ it('lets user2 buy a star and decreases its balance in ether', async() => {
 // Implement Task 2 Add supporting unit tests
 
 it('can add the star name and star symbol properly', async() => {
-    let instance = await StarNotary.deployed();
     let starId = 6;
 
     //1. Create a star
@@ -97,7 +92,6 @@ it('can add the star name and star symbol properly', async() => {
 });
 
 it('lets 2 users exchange stars', async() => {
-    let instance = await StarNotary.deployed();
     let starId1 = 7;
     let starId2 = 8;
 
@@ -116,8 +110,6 @@ it('lets 2 users exchange stars', async() => {
 });
 
 it('lets a user transfer a star', async() => {
-    let instance = await StarNotary.deployed();
-
     let starId = 9;
 
     // 1. create a Star
