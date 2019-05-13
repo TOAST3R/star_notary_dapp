@@ -41,9 +41,7 @@ const App = {
 
   // Implement Task 4 Modify the front end of the DAPP
   lookUp: async function (){
-    
-  }
-
+  },
 };
 
 window.App = App;
