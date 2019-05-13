@@ -69,6 +69,7 @@ contract StarNotary is ERC721 {
         address address2 = ownerOf(_tokenId2);
 
         require(address1 == msg.sender || address2 == msg.sender, "Sender should own one of the star tokens");
+        require(address1 != msg.sender || address2 != msg.sender, "Sender should only own one of the star tokens");
 
         //2. You don't have to check for the price of the token (star)
         //3. Get the owner of the two tokens (ownerOf(_tokenId1), ownerOf(_tokenId1)
